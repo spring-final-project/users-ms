@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: users-ms
+  datasource:
+    url: jdbc:h2:mem:testDb;MODE=PostgreSQL
+    username: test
+    password: test
+  jpa:
+    hibernate:
+      ddl-auto: update
+  flyway:
+    enabled: false
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
