@@ -1,4 +1,4 @@
-FROM maven:3.9-eclipse-temurin-22-alpine AS build
+FROM maven:3.9-eclipse-temurin-21-alpine AS build
 
 WORKDIR /app
 
@@ -12,7 +12,7 @@ COPY ./src/main ./src/main
 RUN mvn clean package -DskipTests
 
 
-FROM openjdk:22-jdk-slim
+FROM openjdk:21-jdk-slim
 
 
 # Download and install the AWS X-Ray daemon

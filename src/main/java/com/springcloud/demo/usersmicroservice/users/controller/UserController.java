@@ -5,10 +5,14 @@ import com.springcloud.demo.usersmicroservice.exceptions.ForbiddenException;
 import com.springcloud.demo.usersmicroservice.exceptions.dto.ErrorResponseDTO;
 import com.springcloud.demo.usersmicroservice.users.dto.*;
 import com.springcloud.demo.usersmicroservice.users.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
@@ -29,6 +33,7 @@ public class UserController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
+    @Operation(security = {})
     @ApiResponses({
             @ApiResponse(responseCode = "400", content = @Content(schema = @Schema(implementation = ErrorResponseDTO.class))),
             @ApiResponse(responseCode = "403", content = @Content(schema = @Schema(implementation = ErrorResponseDTO.class)))
